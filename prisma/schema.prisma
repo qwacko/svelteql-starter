@@ -1,0 +1,28 @@
+datasource db {
+  provider = "postgres"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = "native"
+}
+
+model Users {
+  id               String           @id @default(cuid())
+  name             String           @default("")
+  email            String           @unique @default("")
+  admin            Boolean          @default(false)
+  identifier_token String           @unique
+  hashed_password  String?
+  Refresh_Tokens   Refresh_Tokens[]
+}
+
+model Refresh_Tokens {
+  id            Int    @id @unique @default(autoincrement())
+  refresh_token String @unique @db.VarChar(300)
+  user          Users  @relation(references: [id], fields: [user_id], onDelete: Cascade)
+  user_id       String
+
+  @@index([user_id])
+}

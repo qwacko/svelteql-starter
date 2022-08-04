@@ -1,0 +1,7 @@
+projects:
+  default:
+    schema:
+      - './src/lib/graphqlServer/graphql/*.graphql'
+      - './src/lib/graphqlServer/graphqlScalars/*.graphql'
+    documents:
+      - '**/*.gql'

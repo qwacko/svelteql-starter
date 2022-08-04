@@ -1,0 +1,18 @@
+fragment UserDisplayedData on User {
+	id
+	name
+	email
+	admin
+}
+
+query GetUserData {
+	user {
+		...UserDisplayedData
+	}
+}
+
+mutation UpdateUserName($id: String!, $name: String!) {
+	updateUser(id: $id, input: { name: $name }) {
+		...UserDisplayedData
+	}
+}

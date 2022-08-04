@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.autoSaveDelay": 500,
+		"files.autoSave": "onFocusChange"
+	}
+}
